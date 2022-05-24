@@ -5,6 +5,7 @@ import (
 	"log"
 	"net"
 
+	. "github.com/laurentiuNiculae/zot-clamav-plugin/server"
 	"google.golang.org/grpc"
 	"zotregistry.io/zot/pkg/plugins/scan"
 )

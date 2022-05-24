@@ -5,7 +5,7 @@ import (
 	"os"
 	"testing"
 
-	adapter "github.com/laurentiuNiculae/zot-clamav-plugin"
+	"github.com/laurentiuNiculae/zot-clamav-plugin/utils"
 	. "github.com/smartystreets/goconvey/convey"
 )
 
@@ -22,7 +22,7 @@ func TestScanImage(t *testing.T) {
 		So(err, ShouldBeNil)
 		So(infectedDir, ShouldNotBeEmpty)
 
-		result, err := adapter.ScanImage(infectedDir)
+		result, err := utils.ScanImage(infectedDir)
 		So(err, ShouldNotBeNil)
 		So(result, ShouldNotBeEmpty)
 	})
@@ -33,7 +33,7 @@ func TestScanImage(t *testing.T) {
 		So(err, ShouldBeNil)
 		So(infectedDir, ShouldNotBeEmpty)
 
-		result, err := adapter.ScanImage(infectedDir)
+		result, err := utils.ScanImage(infectedDir)
 		So(err, ShouldBeNil)
 		So(result, ShouldNotBeEmpty)
 	})

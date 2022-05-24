@@ -1,10 +1,11 @@
-package main
+package server
 
 import (
 	"context"
 	"fmt"
 	"os"
 
+	"github.com/laurentiuNiculae/zot-clamav-plugin/utils"
 	"zotregistry.io/zot/pkg/plugins/scan"
 )
 
@@ -19,30 +20,29 @@ func (ss ScanServer) Scan(ctx context.Context, request *scan.ScanRequest) (*scan
 	)
 
 	// download the image using skopeo
-	downloadDir, err := CopyImage(image, registryURL)
+	downloadDir, err := utils.CopyImage(image, registryURL)
 	if err != nil {
 		return emptyReport(request.Image), nil
 	}
 	defer os.RemoveAll(downloadDir)
 
 	// unpack the image with umoci
-	unpackDir, err := UnpackImage(downloadDir)
+	unpackDir, err := utils.UnpackImage(image, downloadDir)
 	if err != nil {
-		fmt.Println("Error when unpacking", err)
+		fmt.Println("Error when unpacking: ", err)
 
 		return emptyReport(request.Image), nil
 	}
 	defer os.RemoveAll(unpackDir)
 
 	// scan using clamav
-	scanResult, err := ScanImage(unpackDir)
+	scanResult, err := utils.ScanImage(downloadDir)
+	fmt.Println(scanResult)
 	if err != nil {
 		fmt.Println("Error when scanning", err)
 
 		return emptyReport(request.Image), nil
 	}
-
-	fmt.Println(scanResult)
 
 	return emptyReport(request.Image), nil
 }

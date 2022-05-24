@@ -1,0 +1,1 @@
+# zot-clamav-plugin
