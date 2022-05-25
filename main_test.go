@@ -22,7 +22,7 @@ func TestScanImage(t *testing.T) {
 		So(err, ShouldBeNil)
 		So(infectedDir, ShouldNotBeEmpty)
 
-		result, err := utils.ScanImage(infectedDir)
+		result, err := utils.ScanImage("testImg", infectedDir)
 		So(err, ShouldNotBeNil)
 		So(result, ShouldNotBeEmpty)
 	})
@@ -33,7 +33,7 @@ func TestScanImage(t *testing.T) {
 		So(err, ShouldBeNil)
 		So(infectedDir, ShouldNotBeEmpty)
 
-		result, err := utils.ScanImage(infectedDir)
+		result, err := utils.ScanImage("testImg", infectedDir)
 		So(err, ShouldBeNil)
 		So(result, ShouldNotBeEmpty)
 	})

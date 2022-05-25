@@ -1,24 +1,23 @@
-//go:build !cmd_implementation
-// +build !cmd_implementation
-
 package utils
 
 import (
 	"fmt"
 	"os/exec"
+
+	"zotregistry.io/zot/pkg/plugins/scan"
 )
 
-func ScanImage(imagePath string) (string, error) {
+func ScanImage(imageName, imagePath string) (*scan.ScanResponse, error) {
 	cmd, err := prepareScanCmd(imagePath)
 	if err != nil {
 		fmt.Println("Can't create scan cmd obj.", err)
 
-		return "", err
+		return emptyResponse(imageName), err
 	}
 
 	stdout, err := cmd.CombinedOutput()
 
-	return string(stdout), err
+	return ConvertScanOutputToRPCResponse(imageName, string(stdout)), err
 }
 
 func prepareScanCmd(imagePath string) (*exec.Cmd, error) {
@@ -36,4 +35,20 @@ func prepareScanCmd(imagePath string) (*exec.Cmd, error) {
 	cmd := exec.Command(execPath, args...)
 
 	return cmd, nil
+}
+
+func emptyResponse(image string) *scan.ScanResponse {
+	return &scan.ScanResponse{
+		Report: &scan.ScanReport{
+			Image: &scan.Image{
+				Name: image,
+			},
+			Scanner: &scan.Scanner{
+				Name:    "ClamAv",
+				Vendor:  "Cisco",
+				Version: "0.1",
+			},
+			Vulnerabilities: make([]*scan.ScanVulnerability, 0),
+		},
+	}
 }

@@ -8,8 +8,9 @@ require (
 	github.com/containers/image/v5 v5.19.1
 	github.com/opencontainers/image-spec v1.0.3-0.20220114050600-8b9d41f48198
 	github.com/opencontainers/umoci v0.4.8-0.20210922062158-e60a0cc726e6
+	github.com/pkg/errors v0.9.1
 	github.com/smartystreets/goconvey v1.7.2
-	google.golang.org/grpc v1.45.0
+	google.golang.org/grpc v1.46.0
 	zotregistry.io/zot v0.0.0-00010101000000-000000000000
 )
 
@@ -65,7 +66,6 @@ require (
 	github.com/opencontainers/runtime-spec v1.0.3-0.20210326190908-1c3f411f0417 // indirect
 	github.com/opencontainers/selinux v1.10.0 // indirect
 	github.com/ostreedev/ostree-go v0.0.0-20190702140239-759a8c1ac913 // indirect
-	github.com/pkg/errors v0.9.1 // indirect
 	github.com/proglottis/gpgme v0.1.1 // indirect
 	github.com/prometheus/client_golang v1.12.1 // indirect
 	github.com/prometheus/client_model v0.2.0 // indirect
@@ -90,12 +90,12 @@ require (
 	go.mozilla.org/pkcs7 v0.0.0-20200128120323-432b2356ecb1 // indirect
 	go.opencensus.io v0.23.0 // indirect
 	golang.org/x/crypto v0.0.0-20220411220226-7b82a4e95df4 // indirect
-	golang.org/x/net v0.0.0-20220412020605-290c469a71a5 // indirect
+	golang.org/x/net v0.0.0-20220520000938-2e3eb7b945c2 // indirect
 	golang.org/x/sync v0.0.0-20210220032951-036812b2e83c // indirect
 	golang.org/x/sys v0.0.0-20220503163025-988cb79eb6c6 // indirect
 	golang.org/x/term v0.0.0-20210927222741-03fcf44c2211 // indirect
 	golang.org/x/text v0.3.7 // indirect
-	google.golang.org/genproto v0.0.0-20220407144326-9054f6ed7bac // indirect
+	google.golang.org/genproto v0.0.0-20220414192740-2d67ff6cf2b4 // indirect
 	google.golang.org/protobuf v1.28.0 // indirect
 	gopkg.in/square/go-jose.v2 v2.6.0 // indirect
 	gopkg.in/yaml.v2 v2.4.0 // indirect
